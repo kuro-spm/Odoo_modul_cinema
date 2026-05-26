@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-    <!-- Acció per invocar l'informe des del botó "Imprimir" -->
+    <!-- Action to trigger the report from the Print button -->
     <record id="action_report_cinema_film" model="ir.actions.report">
-        <field name="name">Fitxa del Film</field>
+        <field name="name">Film Sheet</field>
         <field name="model">cinema.film</field>
         <field name="report_type">qweb-pdf</field>
         <field name="report_name">cinema_maig2025.report_cinema_film_template</field>
@@ -12,38 +12,38 @@
         <field name="binding_type">report</field>
     </record>
 
-    <!-- Template QWeb de l'informe -->
+    <!-- QWeb report template -->
     <template id="report_cinema_film_template">
         <t t-call="web.html_container">
             <t t-foreach="docs" t-as="film">
                 <t t-call="web.external_layout">
                     <div class="page">
 
-                        <!-- Títol principal -->
+                        <!-- Main title -->
                         <div class="text-center mb-4">
                             <h1>FILM</h1>
                         </div>
 
-                        <!-- Dades bàsiques del film -->
+                        <!-- Film basic data -->
                         <div class="row mb-3">
                             <div class="col-8">
                                 <table class="table table-sm" style="border:none;">
                                     <tr>
                                         <td style="width:30%; font-weight:bold;">Film:</td>
                                         <td><t t-esc="film.title"/></td>
-                                        <td style="width:20%; font-weight:bold;">Director/a:</td>
+                                        <td style="width:20%; font-weight:bold;">Director:</td>
                                         <td><t t-esc="film.director_id.full_name or ''"/></td>
                                     </tr>
                                     <tr>
-                                        <td style="font-weight:bold;">Durada:</td>
+                                        <td style="font-weight:bold;">Duration:</td>
                                         <td><t t-esc="film.duration"/></td>
-                                        <td style="font-weight:bold;">Nacionalitat:</td>
+                                        <td style="font-weight:bold;">Nationality:</td>
                                         <td><t t-esc="film.director_citizenship.name or ''"/></td>
                                     </tr>
                                     <tr>
-                                        <td style="font-weight:bold;">Tipus:</td>
+                                        <td style="font-weight:bold;">Type:</td>
                                         <td><t t-esc="film.type"/></td>
-                                        <td style="font-weight:bold;">Any:</td>
+                                        <td style="font-weight:bold;">Year:</td>
                                         <td>
                                             <t t-if="film.year">
                                                 <t t-esc="film.year.year"/>
@@ -64,23 +64,23 @@
                             </div>
                         </div>
 
-                        <!-- Sinopsi -->
+                        <!-- Synopsis -->
                         <t t-if="film.synopsis">
-                            <h2>Sinopsi</h2>
+                            <h2>Synopsis</h2>
                             <p><t t-esc="film.synopsis"/></p>
                         </t>
 
-                        <!-- Actors / Actrius -->
+                        <!-- Actors / Actresses -->
                         <t t-if="film.actors_ids">
-                            <h2>Actors/Actrius</h2>
+                            <h2>Actors/Actresses</h2>
                             <table class="table table-sm table-bordered">
                                 <thead>
                                     <tr>
-                                        <th>Nom complet</th>
-                                        <th>Gènere</th>
-                                        <th>Nacionalitat</th>
-                                        <th>Data Naixement</th>
-                                        <th>Data Mort</th>
+                                        <th>Full Name</th>
+                                        <th>Gender</th>
+                                        <th>Nationality</th>
+                                        <th>Birthdate</th>
+                                        <th>Date of Death</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -88,8 +88,8 @@
                                         <tr>
                                             <td><t t-esc="actor.full_name"/></td>
                                             <td>
-                                                <t t-if="actor.gender == 'male'">Home</t>
-                                                <t t-if="actor.gender == 'female'">Dona</t>
+                                                <t t-if="actor.gender == 'male'">Male</t>
+                                                <t t-if="actor.gender == 'female'">Female</t>
                                             </td>
                                             <td><t t-esc="actor.country_id.name or ''"/></td>
                                             <td><t t-esc="actor.birthdate"/></td>

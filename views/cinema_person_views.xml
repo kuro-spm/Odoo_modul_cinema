@@ -29,14 +29,14 @@
             <form string="Cinema Person">
                 <sheet>
                     <group>
-                        <group string="Informació personal">
+                        <group string="Personal Information">
                             <field name="last_name" />
                             <field name="first_name" />
                             <field name="gender" />
                             <field name="country_id" />
                         </group>
 
-                        <group string="Dates i rols professionals">
+                        <group string="Dates &amp; Professional Roles">
                             <field name="birthdate" />
                             <field name="date_of_death" />
                             <field name="is_director" />
@@ -45,7 +45,7 @@
                     </group>
 
                     <notebook>
-                        <page string="Films dirigits" name="directed_films"
+                        <page string="Directed Films" name="directed_films"
                               invisible="not is_director">
                             <field name="directed_films_ids" readonly="1">
                                 <list>
@@ -56,7 +56,7 @@
                             </field>
                         </page>
 
-                        <page string="Films com a actor/actriu" name="acted_films"
+                        <page string="Acted Films" name="acted_films"
                               invisible="not is_actor">
                             <field name="acted_films_ids" readonly="1">
                                 <list>

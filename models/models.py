@@ -93,13 +93,13 @@ class CinemaFilm(models.Model):
         for obj in self:
             if obj.duration:
                 if obj.duration < 30:
-                    obj.type = 'Curtmetratge'
+                    obj.type = 'Short film'
                 elif obj.duration < 60:
-                    obj.type = 'Migmetratge'
+                    obj.type = 'Medium-length film'
                 else:
-                    obj.type = 'Llargmetratge'
+                    obj.type = 'Feature film'
             else:
-                obj.type = 'Desconegut'
+                obj.type = 'Unknown'
 
     @api.constrains('year')
     def _constrains_year(self):

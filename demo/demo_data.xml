@@ -2,9 +2,7 @@
 <odoo>
     <data>
 
-        <!-- País d'Espanya (ja existeix a res.country, el referenciarem) -->
-
-        <!-- Persona demo: Sara Prats Morales, actriu i directora -->
+        <!-- Demo person: Sara Prats Morales, both actress and director -->
         <record id="demo_person_sara" model="cinema.person">
             <field name="first_name">Sara</field>
             <field name="last_name">Prats Morales</field>
@@ -15,16 +13,16 @@
             <field name="country_id" ref="base.es"/>
         </record>
 
-        <!-- Film demo on Sara actua i dirigeix -->
+        <!-- Demo film where Sara is both director and actress -->
         <record id="demo_film_igualada" model="cinema.film">
-            <field name="title">El somni d'Igualada</field>
+            <field name="title">The Dream of Igualada</field>
             <field name="year">2024-01-01</field>
             <field name="duration">95</field>
             <field name="director_id" ref="demo_person_sara"/>
             <field name="actors_ids" eval="[(4, ref('demo_person_sara'))]"/>
             <field name="web_page">https://www.filmaffinity.com/es/film000001.html</field>
-            <field name="synopsis">Una jove directora de cinema de la Catalunya Central descobreix que la seva vida
-és el millor guió que podria haver escrit mai.</field>
+            <field name="synopsis">A young film director from central Catalonia discovers
+that her own life is the best screenplay she could have ever written.</field>
         </record>
 
     </data>
