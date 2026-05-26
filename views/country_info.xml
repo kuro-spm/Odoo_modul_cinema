@@ -8,7 +8,7 @@
         <field name="arch" type="xml">
             <!--<xpath expr="//group[@name='country_details']" position="inside"> <field name="el_teu_camp_nou" /> </xpath>-->
             <!--after, before, inside...-->
-            <field name="code" position="after">
+            <field name="vat_label" position="after">
                 <field name="qt_directors" />
             </field>
         </field>
