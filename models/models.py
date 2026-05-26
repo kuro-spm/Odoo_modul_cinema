@@ -6,6 +6,7 @@ class CinemaPerson(models.Model):
     _name = 'cinema.person'
     _description = 'Cinema Person Management'
     _rec_name = 'full_name'
+    _order = 'last_name, first_name, birthdate desc'
 
     first_name = fields.Char('First Name', size=25, required=True)
     last_name = fields.Char('Last Name', size=45, required=True)
@@ -15,8 +16,8 @@ class CinemaPerson(models.Model):
     birthdate = fields.Date('Birthdate', required=True)
     date_of_death = fields.Date('Date of Death')
 
-    directed_films_ids = fields.One2many('cinema.film', 'director_id', string='Directed Films')
-    acted_films_ids = fields.Many2many('cinema.film', string='Acted Films')
+    directed_films_ids = fields.One2many('cinema.film', 'director_id', string='Directed Films', readonly=True)
+    acted_films_ids = fields.Many2many('cinema.film', string='Acted Films' , readonly=True)
     country_id = fields.Many2one('res.country','Citizenship', required=True)
 
     full_name = fields.Char(compute='_compute_full_name', string='Full name')
@@ -81,8 +82,20 @@ class CinemaFilm(models.Model):
                 if obj.year<1895:
                     raise ValidationError(_('Year must be past 1895.'))
 
-   
+    def _auto_init(self):
+        res = super(CinemaFilm, self)._auto_init()
+        # Creem un índex únic parcial que ignora els valors buits (NULL)
+        self._cr.execute("""
+            CREATE UNIQUE INDEX IF NOT EXISTS cinema_film_webpage
+            ON %s (web_page)
+            WHERE web_page IS NOT NULL AND web_page != ''
+        """ % self._table)
+        return res
 
+    @api.onchange('web_page')
+    def _onchange_web_page(self):
+        if(self.web_page):
+            self.web_page = self.web_page.lower()
 
     #campo_id = fields.Many2one('modelo.relacionado', string='Etiqueta') 
     #campos_ids = fields.One2many('modelo.relacionado', 'campo_many2one_relacionado', string='Etiqueta') 
