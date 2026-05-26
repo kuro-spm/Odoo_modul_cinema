@@ -25,35 +25,54 @@
         <field name="arch" type="xml">
             <form string="">
                 <sheet>
-                    <group>
-                        <group name="personal_details">
+
+                    <group col="4">
+
+                        <group name="personal_names">
                             <field name="last_name" />
                             <field name="first_name" />
-                            <field name="birthdate" />
-                            <field name="date_of_death" />
                         </group>
-                        <group>
-                            <field name="gender" />
-                            <field name="country_id" />
+
+                        <group col="4">
+                            <group name="biography_dates">
+                                <field name="birthdate" />
+                                <field name="date_of_death" />
+                            </group>
+
+                            <group name="demographics_and_roles">
+                                <field name="gender" />
+                                <field name="country_id" />
+                            </group>
+                        </group>
+
+                        <group col="4">
                             <field name="is_director" />
                             <field name="is_actor" />
                         </group>
+
                     </group>
-                    <group>
-                        <field name="directed_films_ids">
-                            <list>
-                                <field name="title" />
-                                <field name="duration" />
-                                <field name="web_page" />
-                            </list>
-                        </field>
-                        <field name="acted_films_ids">
-                            <list>
-                                <field name="title" />
-                                <field name="duration" />
-                                <field name="web_page" />
-                            </list>
-                        </field>
+
+                    <group col="2">
+
+                        <group string="Directed Films">
+                            <field name="directed_films_ids" nolabel="1">
+                                <list>
+                                    <field name="title" />
+                                    <field name="duration" />
+                                    <field name="web_page" />
+                                </list>
+                            </field>
+                        </group>
+
+                        <group string="Acted Films">
+                            <field name="acted_films_ids" nolabel="1">
+                                <list>
+                                    <field name="title" />
+                                    <field name="duration" />
+                                    <field name="web_page" />
+                                </list>
+                            </field>
+                        </group>
 
                     </group>
 
