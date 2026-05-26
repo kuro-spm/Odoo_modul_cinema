@@ -1,5 +1,5 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-cinema_person_cinema_manager,cinema.person.cinema_manager,model_cinema_person,cinema.group_cinema_manager,1,1,1,1
-cinema_film_cinema_manager,cinema.film.cinema_manager,model_cinema_film,cinema.group_cinema_manager,1,1,1,1
-cinema_person_cinema_user,cinema.person.cinema_user,model_cinema_person,cinema.group_cinema_user,1,0,0,0
-cinema_film_cinema_user,cinema.film.cinema_user,model_cinema_film,cinema.group_cinema_user,1,0,0,0
+cinema_person_cinema_manager,cinema.person.cinema_manager,model_cinema_person,modul_cinema.group_cinema_manager,1,1,1,1
+cinema_film_cinema_manager,cinema.film.cinema_manager,model_cinema_film,modul_cinema.group_cinema_manager,1,1,1,1
+cinema_person_cinema_user,cinema.person.cinema_user,model_cinema_person,modul_cinema.group_cinema_user,1,0,0,0
+cinema_film_cinema_user,cinema.film.cinema_user,model_cinema_film,modul_cinema.group_cinema_user,1,0,0,0
