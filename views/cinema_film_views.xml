@@ -24,14 +24,15 @@
                     </group>
                     <notebook>
                         <page string="Actors">
-                            <list>
-                                <field name="full_name" />
-                                <field name="gender" />
-                                <field name="country_id" />
-                                <field name="birthdate" />
-                                <field name="date_of_death" />
-                            </list>
-
+                            <field name="actors_ids">
+                                <list>
+                                    <field name="full_name" />
+                                    <field name="gender" />
+                                    <field name="country_id" />
+                                    <field name="birthdate" />
+                                    <field name="date_of_death" />
+                                </list>
+                            </field>
                         </page>
                     </notebook>
                 </sheet>
