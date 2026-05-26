@@ -29,14 +29,14 @@
                         <group col='4'>
                             <field name="last_name" colspan='4' />
                             <field name="first_name" colspan='4' />
-                            <field name="birthdate" />
-                            <field name="date_of_death" />
+                            <field name="birthdate" colspan='2' />
+                            <field name="date_of_death" colspan='2' />
                         </group>
                         <group col='4'>
-                            <field name="gender" />
-                            <field name="country_id" />
-                            <field name="is_director" />
-                            <field name="is_actor" />
+                            <field name="gender" colspan='2' />
+                            <field name="country_id" colspan='2' />
+                            <field name="is_director" colspan='2' />
+                            <field name="is_actor" colspan='2' />
                         </group>
                         <group col='8'>
                             <field name="directed_films_ids" colspan='4'>
