@@ -132,3 +132,14 @@ class CinemaFilm(models.Model):
     #campo_id = fields.Many2one('modelo.relacionado', string='Etiqueta') 
     #campos_ids = fields.One2many('modelo.relacionado', 'campo_many2one_relacionado', string='Etiqueta') 
     #campos_ids = fields.Many2many('modelo.relacionado', string='Etiqueta') 
+
+class ResCountry(models.Model):
+    _inherit = 'res.country'
+
+    director_ids = fields.One2many('cinema.person', 'country_id', string='Directors')
+    qt_directors = fields.Integer(compute='_compute_qt_directors', string='Qt Directors')
+    
+    @api.depends('director_ids')
+    def _compute_qt_directors(self):
+        for obj in self:
+            obj.qt_directors = len(obj.director_ids)
