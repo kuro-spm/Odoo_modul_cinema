@@ -41,7 +41,7 @@
                     </group>
 
                     <notebook>
-                        <page string="Directed Films" name="directed_films">
+                        <page string="Directed Films" name="directed_films" invisible="not is_director">
                             <field name="directed_films_ids" readonly="1">
                                 <list>
                                     <field name="title" />
@@ -50,7 +50,8 @@
                                 </list>
                             </field>
                         </page>
-                        <page string="Acted Films" name="acted_films">
+
+                        <page string="Acted Films" name="acted_films" invisible="not is_actor">
                             <field name="acted_films_ids" readonly="1">
                                 <list>
                                     <field name="title" />
@@ -60,11 +61,9 @@
                             </field>
                         </page>
                     </notebook>
-
                 </sheet>
             </form>
         </field>
     </record>
 
 </odoo>
-
