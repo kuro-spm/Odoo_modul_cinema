@@ -15,9 +15,12 @@
     'license': 'LGPL-3', 
     'depends': ['base'], 
     'data': [ 
+        #'security/security.xml', #primer definim els grups
         #'security/ir.model.access.csv', 
         'views/actions.xml', 
         'views/menus.xml', 
+        'views/cinema_film_views.xml',
+        'views/cinema_person_views.xml'
     ], 
     'installable': True, 
     'application': True, 

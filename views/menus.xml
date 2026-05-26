@@ -1,6 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+    <menuitem
+        id="root_menu"
+        name="Cinema" />
 
-    
+    <menuitem
+        id="configuration_menu"
+        name="Configuration"
+        parent="root_menu"
+        sequence="99" />
+
+    <menuitem
+        id="cinema_film_menu"
+        name="Films"
+        action="cinema_film_action"
+        parent="parent_id"
+        sequence="10" />
+
+
+    <menuitem
+        id="cinema_person_menu"
+        name="People"
+        action="cinema_person_action"
+        parent="root_menu"
+        sequence="10" />
+
 
 </odoo>
