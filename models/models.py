@@ -48,6 +48,28 @@ class CinemaPerson(models.Model):
             ['first_name', 'last_name', 'birthdate']
         )
         return res
+    
+    def unlink(self):
+        for obj in self:
+            # Comptem directament a partir dels camps relacionals
+            num_directed = len(obj.directed_films_ids)
+            #q_directed = self.env['cinema.film'].search_count([
+            #    ('director_id', '=', obj.id),            
+            #])
+            num_acted = len(obj.acted_films_ids)
+            #q_acted = self.env['cinema.film'].search_count([
+            #    ('actors_ids', 'in', [obj.id]),     
+            #    ('actors_ids', '=', obj.id)   #alternativa    
+            #])
+            total_films = num_directed + num_acted
+
+            if total_films > 0:
+                raise ValidationError(_(
+                    "Cannot delete %s because they are linked to %s directed films and %s acted films."
+                ) % (obj.full_name, num_directed, num_acted))
+                
+        # Si cap registre té pel·lícules, es crida de manera segura al mètode pare
+        return super(CinemaPerson, self).unlink()
 
 
 class CinemaFilm(models.Model):
@@ -58,6 +80,7 @@ class CinemaFilm(models.Model):
     year = fields.Date('year', required=True)
     duration = fields.Integer(string='Duration', help='Duration in minutes', required=True)    
     
+    actors_ids = fields.Many2many('cinema.person', string='actors')
     director_id = fields.Many2one('cinema.person', string='director')
     type = fields.Char(compute='_compute_type', string='type')
     
@@ -79,7 +102,7 @@ class CinemaFilm(models.Model):
     def _constrains_year(self):
         for obj in self:
             if obj.year:
-                if obj.year.year <1895:
+                if obj.year.year <1895: #accidir a l'any de la date!
                     raise ValidationError(_('Year must be past 1895.'))
 
     def _auto_init(self):
@@ -96,6 +119,9 @@ class CinemaFilm(models.Model):
     def _onchange_web_page(self):
         if(self.web_page):
             self.web_page = self.web_page.lower()
+
+    
+    
 
     #campo_id = fields.Many2one('modelo.relacionado', string='Etiqueta') 
     #campos_ids = fields.One2many('modelo.relacionado', 'campo_many2one_relacionado', string='Etiqueta') 
