@@ -14,7 +14,7 @@
         id="cinema_film_menu"
         name="Films"
         action="cinema_film_action"
-        parent="parent_id"
+        parent="root_menu"
         sequence="10" />
 
 
@@ -22,7 +22,7 @@
         id="cinema_person_menu"
         name="People"
         action="cinema_person_action"
-        parent="root_menu"
+        parent="configuration_menu"
         sequence="10" />
 
 
