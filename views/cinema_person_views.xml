@@ -18,55 +18,53 @@
         </field>
     </record>
 
-        <record id="cinema_person_view_form" model="ir.ui.view">
-            <field name="name">cinema.person.view.form</field>
-            <field name="model">cinema.person</field>
-            <field name="arch" type="xml">
-                <form string="Cinema Person">
-                    <sheet>
-                        <group>
-                            <group string="Personal Information">
-                                <field name="first_name" />
-                                <field name="last_name" />
-                                <field name="gender" />
-                                <field name="country_id" />
-                            </group>
-
-                            <group string="Dates &amp; Professional Roles">
-                                <field name="birthdate" />
-                                <field name="date_of_death" />
-                                <field name="is_director" />
-                                <field name="is_actor" />
-                            </group>
+    <record id="cinema_person_view_form" model="ir.ui.view">
+        <field name="name">cinema.person.view.form</field>
+        <field name="model">cinema.person</field>
+        <field name="arch" type="xml">
+            <form string="Cinema Person">
+                <sheet>
+                    <group>
+                        <group string="Personal Information">
+                            <field name="first_name" />
+                            <field name="last_name" />
+                            <field name="gender" />
+                            <field name="country_id" />
                         </group>
 
-                        <notebook>
-                            <page string="Directed Films" name="directed_films">
-                                <field name="directed_films_ids" readonly="1">
-                                    <list>
-                                        <field name="title" />
-                                        <field name="duration" />
-                                        <field name="web_page" />
-                                    </list>
-                                </field>
-                            </page>
-                            <page string="Acted Films" name="acted_films">
-                                <field name="acted_films_ids" readonly="1">
-                                    <list>
-                                        <field name="title" />
-                                        <field name="duration" />
-                                        <field name="web_page" />
-                                    </list>
-                                </field>
-                            </page>
-                        </notebook>
+                        <group string="Dates &amp; Professional Roles">
+                            <field name="birthdate" />
+                            <field name="date_of_death" />
+                            <field name="is_director" />
+                            <field name="is_actor" />
+                        </group>
+                    </group>
 
-                    </sheet>
-                </form>
-            </field>
-        </record>
+                    <notebook>
+                        <page string="Directed Films" name="directed_films">
+                            <field name="directed_films_ids" readonly="1">
+                                <list>
+                                    <field name="title" />
+                                    <field name="duration" />
+                                    <field name="web_page" />
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Acted Films" name="acted_films">
+                            <field name="acted_films_ids" readonly="1">
+                                <list>
+                                    <field name="title" />
+                                    <field name="duration" />
+                                    <field name="web_page" />
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
 
-    </odoo>
-
+                </sheet>
+            </form>
+        </field>
+    </record>
 
 </odoo>
+
