@@ -20,7 +20,8 @@
         'views/actions.xml', 
         'views/menus.xml', 
         'views/cinema_film_views.xml',
-        'views/cinema_person_views.xml'
+        'views/cinema_person_views.xml',
+        'views/country_info.xml'
     ], 
     'installable': True, 
     'application': True, 
