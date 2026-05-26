@@ -82,6 +82,12 @@ class CinemaFilm(models.Model):
     
     actors_ids = fields.Many2many('cinema.person', string='actors')
     director_id = fields.Many2one('cinema.person', string='director')
+    director_citizenship = fields.Many2one(
+        comodel_name='res.country', 
+        related='director_id.country_id', 
+        string='Director Citizenship', 
+        readonly=True
+    )
     type = fields.Char(compute='_compute_type', string='type')
     
     synopsis = fields.Text('synopsis')

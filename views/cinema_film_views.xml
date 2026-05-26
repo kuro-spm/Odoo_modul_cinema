@@ -1,6 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
+    <record id="cinema_film_view_form" model="ir.ui.view">
+        <field name="name">cinema.film.view.form</field>
+        <field name="model">cinema.film</field>
+        <field name="arch" type="xml">
+            <form string="Film">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="title" />
+                            <field name="duration" />
+                            <field name="type" />
+                            <field name="web_page" />
+                        </group>
+                        <group>
+                            <field name="director_id" />
+                            <field name="director_citizenship" />
+                        </group>
+                        
+                    </group>
+                    <notebook>
+                        <page string="Actors">
+                            
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
     
 
 </odoo>
