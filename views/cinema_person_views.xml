@@ -27,7 +27,7 @@
                 <sheet>
                     <group>
                         <group col='4'>
-                            <field name="last_name" colspan='4'/>
+                            <field name="last_name" colspan='4' />
                             <field name="firts_name" colspan='4' />
                             <field name="birthdate" />
                             <field name="date_of_death" />
@@ -37,6 +37,13 @@
                             <field name="country_id" />
                             <field name="is_director" />
                             <field name="is_actor" />
+                        </group>
+                        <group col='8'>
+                            <field name="directed_films_ids">
+
+
+                            </field>
+
                         </group>
 
                     </group>
