@@ -17,8 +17,6 @@
             </list>
         </field>
     </record>
-    <?xml version="1.0" encoding="utf-8"?>
-    <odoo>
 
         <record id="cinema_person_view_form" model="ir.ui.view">
             <field name="name">cinema.person.view.form</field>
