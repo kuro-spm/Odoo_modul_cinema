@@ -1,29 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
+    <!-- cinema.film list view -->
+    <record id="cinema_film_view_list" model="ir.ui.view">
+        <field name="name">cinema.film.view.list</field>
+        <field name="model">cinema.film</field>
+        <field name="arch" type="xml">
+            <list string="Films">
+                <field name="title" />
+                <field name="year" />
+                <field name="director_id" />
+                <field name="duration" />
+                <field name="type" />
+                <field name="web_page" />
+            </list>
+        </field>
+    </record>
+
+    <!-- cinema.film form view -->
     <record id="cinema_film_view_form" model="ir.ui.view">
         <field name="name">cinema.film.view.form</field>
         <field name="model">cinema.film</field>
         <field name="arch" type="xml">
             <form string="Film">
                 <sheet>
-                    <group>
-                        <group>
-                            <field name="title" />
-                            <field name="duration" />
-                            <field name="type" />
-                            <field name="web_page" />
+                    <group col="3">
+                        <group colspan="2" style="width:75%">
+                            <group>
+                                <field name="title" />
+                                <field name="duration" />
+                                <field name="type" />
+                                <field name="web_page" />
+                            </group>
+                            <group>
+                                <field name="director_id" />
+                                <field name="director_citizenship" />
+                                <field name="year" />
+                            </group>
+                            <group colspan="2">
+                                <field name="synopsis" />
+                            </group>
                         </group>
-                        <group>
-                            <field name="director_id" />
-                            <field name="director_citizenship" />
-                            <field name="year" />
+                        <group colspan="1" style="width:25%">
+                            <!-- Cartell de cinema: proporció 27x40 cm → [x, x*40/27] -->
+                            <field name="poster" widget="image"
+                                   options="{'size': [270, 400]}"
+                                   nolabel="1" />
                         </group>
-                        <field name="synopsis" />
-
                     </group>
+
                     <notebook>
-                        <page string="Actors">
+                        <page string="Actors/Actrius">
                             <field name="actors_ids">
                                 <list>
                                     <field name="full_name" />
@@ -39,6 +66,5 @@
             </form>
         </field>
     </record>
-
 
 </odoo>

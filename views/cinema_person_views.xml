@@ -6,18 +6,22 @@
         <field name="name">cinema.person.view.list</field>
         <field name="model">cinema.person</field>
         <field name="arch" type="xml">
-            <list string="People" decoration-danger="date_of_death==True"> <!--vermell si és mort-->
+            <!-- persones vives en verd, persones mortes en vermell -->
+            <list string="People"
+                  decoration-success="not date_of_death"
+                  decoration-danger="date_of_death">
                 <field name="full_name" />
-                <field name='gender' />
+                <field name="gender" />
                 <field name="country_id" />
                 <field name="birthdate" />
-                <field name='date_of_death' />
+                <field name="date_of_death" />
                 <field name="is_director" />
                 <field name="is_actor" />
             </list>
         </field>
     </record>
 
+    <!-- cinema.person form view -->
     <record id="cinema_person_view_form" model="ir.ui.view">
         <field name="name">cinema.person.view.form</field>
         <field name="model">cinema.person</field>
@@ -25,14 +29,14 @@
             <form string="Cinema Person">
                 <sheet>
                     <group>
-                        <group string="Personal Information">
-                            <field name="first_name" />
+                        <group string="Informació personal">
                             <field name="last_name" />
+                            <field name="first_name" />
                             <field name="gender" />
                             <field name="country_id" />
                         </group>
 
-                        <group string="Dates &amp; Professional Roles">
+                        <group string="Dates i rols professionals">
                             <field name="birthdate" />
                             <field name="date_of_death" />
                             <field name="is_director" />
@@ -41,7 +45,8 @@
                     </group>
 
                     <notebook>
-                        <page string="Directed Films" name="directed_films" invisible="not is_director">
+                        <page string="Films dirigits" name="directed_films"
+                              invisible="not is_director">
                             <field name="directed_films_ids" readonly="1">
                                 <list>
                                     <field name="title" />
@@ -51,7 +56,8 @@
                             </field>
                         </page>
 
-                        <page string="Acted Films" name="acted_films" invisible="not is_actor">
+                        <page string="Films com a actor/actriu" name="acted_films"
+                              invisible="not is_actor">
                             <field name="acted_films_ids" readonly="1">
                                 <list>
                                     <field name="title" />

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Acció per invocar l'informe des del botó "Imprimir" -->
+    <record id="action_report_cinema_film" model="ir.actions.report">
+        <field name="name">Fitxa del Film</field>
+        <field name="model">cinema.film</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">cinema_maig2025.report_cinema_film_template</field>
+        <field name="report_file">cinema_maig2025.report_cinema_film_template</field>
+        <field name="binding_model_id" ref="model_cinema_film"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <!-- Template QWeb de l'informe -->
+    <template id="report_cinema_film_template">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="film">
+                <t t-call="web.external_layout">
+                    <div class="page">
+
+                        <!-- Títol principal -->
+                        <div class="text-center mb-4">
+                            <h1>FILM</h1>
+                        </div>
+
+                        <!-- Dades bàsiques del film -->
+                        <div class="row mb-3">
+                            <div class="col-8">
+                                <table class="table table-sm" style="border:none;">
+                                    <tr>
+                                        <td style="width:30%; font-weight:bold;">Film:</td>
+                                        <td><t t-esc="film.title"/></td>
+                                        <td style="width:20%; font-weight:bold;">Director/a:</td>
+                                        <td><t t-esc="film.director_id.full_name or ''"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-weight:bold;">Durada:</td>
+                                        <td><t t-esc="film.duration"/></td>
+                                        <td style="font-weight:bold;">Nacionalitat:</td>
+                                        <td><t t-esc="film.director_citizenship.name or ''"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-weight:bold;">Tipus:</td>
+                                        <td><t t-esc="film.type"/></td>
+                                        <td style="font-weight:bold;">Any:</td>
+                                        <td>
+                                            <t t-if="film.year">
+                                                <t t-esc="film.year.year"/>
+                                            </t>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-weight:bold;">Web:</td>
+                                        <td colspan="3"><t t-esc="film.web_page or ''"/></td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="col-4 text-center">
+                                <t t-if="film.poster">
+                                    <img t-att-src="'data:image/png;base64,' + film.poster.decode('utf-8')"
+                                         style="max-height:180px; max-width:120px;"/>
+                                </t>
+                            </div>
+                        </div>
+
+                        <!-- Sinopsi -->
+                        <t t-if="film.synopsis">
+                            <h2>Sinopsi</h2>
+                            <p><t t-esc="film.synopsis"/></p>
+                        </t>
+
+                        <!-- Actors / Actrius -->
+                        <t t-if="film.actors_ids">
+                            <h2>Actors/Actrius</h2>
+                            <table class="table table-sm table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Nom complet</th>
+                                        <th>Gènere</th>
+                                        <th>Nacionalitat</th>
+                                        <th>Data Naixement</th>
+                                        <th>Data Mort</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="film.actors_ids" t-as="actor">
+                                        <tr>
+                                            <td><t t-esc="actor.full_name"/></td>
+                                            <td>
+                                                <t t-if="actor.gender == 'male'">Home</t>
+                                                <t t-if="actor.gender == 'female'">Dona</t>
+                                            </td>
+                                            <td><t t-esc="actor.country_id.name or ''"/></td>
+                                            <td><t t-esc="actor.birthdate"/></td>
+                                            <td><t t-esc="actor.date_of_death or ''"/></td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </t>
+
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+</odoo>
