@@ -22,7 +22,7 @@ class CinemaPerson(models.Model):
 
     full_name = fields.Char(compute='_compute_full_name', string='Full name')
     
-    @api.depends('first_name, last_name')
+    @api.depends('first_name', 'last_name')
     def _compute_full_name(self):
         for obj in self:
             if obj.first_name and obj.last_name:
@@ -78,8 +78,8 @@ class CinemaFilm(models.Model):
     @api.constrains('year')
     def _constrains_year(self):
         for obj in self:
-            if obj.duration:
-                if obj.year<1895:
+            if obj.year:
+                if obj.year.year <1895:
                     raise ValidationError(_('Year must be past 1895.'))
 
     def _auto_init(self):
