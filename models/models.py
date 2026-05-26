@@ -10,8 +10,8 @@ class CinemaPerson(models.Model):
 
     first_name = fields.Char('First Name', size=25, required=True)
     last_name = fields.Char('Last Name', size=45, required=True)
-    is_director = fields.Boolean('Is Director', required=True)
-    is_actor = fields.Boolean('Is Actor', required=True)
+    is_director = fields.Boolean('Is Director?', required=True)
+    is_actor = fields.Boolean('Is Actor?', required=True)
     gender = fields.Selection([('male', 'Male'), ('female', 'Female'), ('other','Other')],'Gender', required=True)
     birthdate = fields.Date('Birthdate', required=True)
     date_of_death = fields.Date('Date of Death')
