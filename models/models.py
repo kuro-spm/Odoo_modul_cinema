@@ -2,18 +2,6 @@
 from odoo import models, fields, api, _ 
 from odoo.exceptions import ValidationError 
  
- 
-class cinema_maig2025Type(models.Model): 
-    _name = 'cinema_maig2025.type' 
-    _description = 'Type Management' 
- 
-    name = fields.Char('Name', size=60, required=True) 
-
-
-#TODO: Persona, Film, Pais
-
-
-
 class CinemaPerson(models.Model):
     _name = 'cinema.person'
     _description = 'Cinema Person Management'
@@ -27,6 +15,8 @@ class CinemaPerson(models.Model):
     birthdate = fields.Date('Birthdate', required=True)
     date_of_death = fields.Date('Date of Death')
 
+    directed_films_ids = fields.One2many('cinema.film', 'director_id', string='Directed Films')
+    acted_films_ids = fields.Many2many('cinema.film', string='Acted Films')
 
     full_name = fields.Char(compute='_compute_full_name', string='Full name')
     
@@ -54,6 +44,7 @@ class CinemaFilm(models.Model):
     year = fields.Date('year')
     duration = fields.Integer(string='Duration', help='Duration in minutes', required=True)    
     
+    director_id = fields.Many2one('cinema.person', string='director')
     type = fields.Char(compute='_compute_type', string='type')
     
     @api.depends('duration')
