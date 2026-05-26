@@ -52,7 +52,7 @@ class CinemaFilm(models.Model):
 
     title = fields.Char('Title', size=60, required=True)
     year = fields.Date('year')
-    duration = fields.Integer(string='Duration', help='Duration in minutes')    
+    duration = fields.Integer(string='Duration', help='Duration in minutes', required=True)    
     
     type = fields.Char(compute='_compute_type', string='type')
     
@@ -63,6 +63,8 @@ class CinemaFilm(models.Model):
                 if obj.duration < 30: obj.type='short film'
                 elif obj.duration < 60: obj.type='medium-length film'
                 else: obj.type = 'full-length film'
+            else:
+                obj.type='unknown'
 
     synopsis = fields.Text('synopsis')
     web_page = fields.Char('web page', size=60)
