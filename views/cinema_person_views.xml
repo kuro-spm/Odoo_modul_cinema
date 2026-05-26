@@ -6,7 +6,7 @@
         <field name="name">cinema.person.view.list</field>
         <field name="model">cinema.person</field>
         <field name="arch" type="xml">
-            <list string="People" decoration-danger="date_of_death==True">
+            <list string="People" decoration-danger="date_of_death==True"> <!--vermell si és mort-->
                 <field name="full_name" />
                 <field name='gender' />
                 <field name="country_id" />
@@ -26,7 +26,18 @@
             <form string="">
                 <sheet>
                     <group>
-                        <!-- Add your fields here -->
+                        <group col='4'>
+                            <field name="last_name" colspan='4'/>
+                            <field name="firts_name" colspan='4' />
+                            <field name="birthdate" />
+                            <field name="date_of_death" />
+                        </group>
+                        <group col='4'>
+                            <field name="gender" />
+                            <field name="country_id" />
+                            <field name="is_director" />
+                            <field name="is_actor" />
+                        </group>
 
                     </group>
                 </sheet>
