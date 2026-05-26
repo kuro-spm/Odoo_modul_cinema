@@ -18,36 +18,40 @@
         </field>
     </record>
 
-    <!-- cinema.person form view -->
     <record id="cinema_person_view_form" model="ir.ui.view">
         <field name="name">cinema.person.view.form</field>
         <field name="model">cinema.person</field>
         <field name="arch" type="xml">
-            <form string="">
+            <form string="Cinema Person">
                 <sheet>
-                    <group>
-                        <group name="personal_details" col='4'>
-                            <field name="last_name" colspan='4' />
-                            <field name="first_name" colspan='4' />
-                            <field name="birthdate" colspan='2' />
-                            <field name="date_of_death" colspan='2' />
-                        </group>
-                        <group>
-                            <field name="gender" />
-                            <field name="country_id" />
-                            <field name="is_director" />
-                            <field name="is_actor" />
-                        </group>
+
+                    <group col="8">
+
+                        <field name="last_name" colspan="4" />
+                        <field name="birthdate" colspan="2" />
+                        <field name="gender" colspan="2" />
+
+                        <field name="first_name" colspan="4" />
+                        <field name="date_of_death" colspan="2" />
+                        <field name="country_id" colspan="2" />
+
+                        <field name="is_director" colspan="2" />
+                        <field name="is_actor" colspan="2" />
+                        <div colspan="4" />
+
                     </group>
-                    <group>
-                        <field name="directed_films_ids">
+
+                    <group col="8">
+
+                        <field name="directed_films_ids" colspan="4" string="Directed Films">
                             <list>
                                 <field name="title" />
                                 <field name="duration" />
                                 <field name="web_page" />
                             </list>
                         </field>
-                        <field name="acted_films_ids">
+
+                        <field name="acted_films_ids" colspan="4" string="Acted Films">
                             <list>
                                 <field name="title" />
                                 <field name="duration" />
