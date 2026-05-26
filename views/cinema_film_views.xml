@@ -17,18 +17,27 @@
                         <group>
                             <field name="director_id" />
                             <field name="director_citizenship" />
+                            <field name="year" />
                         </group>
-                        
+                        <field name="synopsis" />
+
                     </group>
                     <notebook>
                         <page string="Actors">
-                            
+                            <list>
+                                <field name="full_name" />
+                                <field name="gender" />
+                                <field name="country_id" />
+                                <field name="birthdate" />
+                                <field name="date_of_death" />
+                            </list>
+
                         </page>
                     </notebook>
                 </sheet>
             </form>
         </field>
     </record>
-    
+
 
 </odoo>
